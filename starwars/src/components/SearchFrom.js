@@ -1,5 +1,6 @@
 import React from 'react'
 import List from './List'
+import './searchForm.css'
 
 class SearchFrom extends React.Component {
   constructor() {
@@ -7,7 +8,14 @@ class SearchFrom extends React.Component {
     this.state = {
       searchTerm: '',
       characters : [],
+      searchFilter: ''
     }
+  }
+
+  searchSelect = (filter) => {
+    this.setState ({
+      searchFilter: filter
+    })
   }
 
   stateSearchTerm = (term) => {
@@ -17,11 +25,10 @@ class SearchFrom extends React.Component {
   }
 
   listOfCharacters = (characters) => {
-    characters.results.map(character => 
-      this.setState ({
-        characters: [...this.state.characters, character.name]
+    const list = characters.results.map(character => [character.name])
+    this.setState ({
+        characters: list 
       })
-    )
   }
 
   handleSearchTerm = (e) => {
@@ -41,7 +48,9 @@ render(){
       <label>Character Name:</label>
       <input type="text" name="term" id="term" placeholder="star wars name.." onChange={e => this.stateSearchTerm(e.target.value)}></input>
     </form>
+    <div className="list">
     <List characters={this.state.characters}/>
+    </div>
     </div>
   )
 }}

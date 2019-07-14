@@ -1,0 +1,23 @@
+p {
+  width: 70%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+*{
+  background-color: black;
+  color: gold;
+}
+
+input{
+  color: gold;
+}
+
+li{
+  list-style: none;
+  padding: 5px;
+}
+
+.list{
+  padding: 40px;
+}
